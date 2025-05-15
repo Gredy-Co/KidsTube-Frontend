@@ -72,3 +72,8 @@ This platform is built following a **Service-Oriented Architecture (SOA)**, inte
    ```bash
    git clone https://github.com/your-username/kidstube-frontend.git
    cd kidstube-frontend
+
+
+## 📂 Repositories
+Backend = https://github.com/Gredy-Co/KidsTube-Backend
+GraphQL = https://github.com/Gredy-Co/KidsTube-GraphQL             
