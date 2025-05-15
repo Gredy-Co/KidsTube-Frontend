@@ -1,157 +1,74 @@
-# KidsTube - Parental Control Platform for Children's Content
+# 🎥 KidsTube - Safe Video Platform for Children
 
-## Table of Contents
-- [Explanation](#explanation)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Frontend](#frontend)
-- [Dependencies](#dependencies)
-- 
-## Description
-KidsTube is a web platform that allows parents and guardians to select and manage the audiovisual content their children can view. The application enables:
+---
 
-- Creating playlists with YouTube videos or custom content
-- Managing restricted profiles for children with controlled access
-- Administering playlists and content securely
+## 📌 Project Overview
 
-**Architecture**:
-- Backend: REST services
-- Frontend: Client application that consumes the services
+**KidsTube** is a web platform designed for parents to control and manage what video content their children are allowed to watch. Videos can be added from YouTube or uploaded directly by the parent, ensuring a secure and curated experience for kids.
 
-## Objectives
-1. Develop a web platform for parental control of audiovisual content
-2. Allow selection of approved content (YouTube or custom videos)
-3. Implement SOA architecture with:
-   - Backend: REST services
-   - Frontend: Client for service consumption
+This platform is built following a **Service-Oriented Architecture (SOA)**, integrating RESTful services for standard functionality and GraphQL for advanced querying. The app also integrates with third-party services like YouTube, Twilio, and MailerSend.
 
-## Functional Requirements
+---
 
-### 1. Main Account Registration
-**User Story**: As a potential user, I want to register to access the platform.
+## 🎯 Objectives
 
-**Acceptance Criteria**:
-- Form with mandatory fields (*):
-  - Email*
-  - Password*
-  - Repeat Password
-  - Phone Number*
-  - PIN (6 digits)*
-  - First Name*
-  - Last Name*
-  - Country
-  - Date of Birth*
-- Frontend and backend validations
-- Age verification (18+)
-- Successful error-free registration
+- Implement a secure registration process with email verification and two-step authentication.
+- Enable searching and adding videos using the YouTube API.
+- Allow account management with child profiles and content restrictions.
+- Use modern authentication mechanisms (JWT and Google OAuth2).
+- Provide flexible and optimized data access via GraphQL queries.
 
-### 2. Login
-**User Story**: As a registered user, I want to log in to the platform.
+---
 
-**Criteria**:
-- Only for main account
-- Form with validations
-- Clear error messages
-- Redirect to home screen
+## 🚀 Technologies Used
 
-### 3. Home Screen
-**Flow**:
-1. Main account:
-   - Displays avatars of restricted users
-   - "Administration" option (requires PIN)
-2. Restricted user:
-   - Requests specific PIN
-   - Shows assigned playlist
+- **Frontend:** Angular CLI v19.1.8
+- **Backend:** Node.js v22.13.1 (REST API & GraphQL)
+- **Authentication:** JWT, Two-Factor Authentication (Twilio), Google OAuth2
+- **Database:** (Your choice — e.g., MongoDB, PostgreSQL, etc.)
+- **Third-Party Services:** YouTube Data API, Twilio, MailerSend
 
-### 4. Restricted User Management
-**Features**:
-- List of existing users
-- New user form:
-  - Full Name*
-  - PIN (6 digits)*
-  - Avatar (predefined images)*
-- Full CRUD operations (Create, Read, Update, Delete)
+---
 
-### 5. Playlist Management
-**Characteristics**:
-- List showing video count
-- New playlist form:
-  - Name*
-  - Associated Profiles* (multiple selection)
-- Edit and delete operations
+## 🔐 Key Features
 
-### 6. Video Management
-**Workflow**:
-1. Select playlist
-2. View existing videos
-3. Add new video:
-   - Name*
-   - Valid YouTube URL*
-   - Description
-4. Edit/Delete videos
+### 🔸 Registration & Authentication
 
-### 7. Playlist Viewing (Restricted User)
-**Experience**:
-1. PIN authentication
-2. View all assigned playlists
-3. Video details per playlist
+- User registration with required phone number.
+- Email verification with activation link (MailerSend).
+- Two-Factor Authentication (2FA) via SMS (Twilio).
+- Register/Login with Google, followed by profile completion.
 
-### 8. Search
-**Functionality**:
-- Search field in playlist view
-- Search by:
-  - Video name
-  - Description
-- Clickable results
+### 🔸 Frontend (Angular)
 
+- Responsive and intuitive UI for parents.
+- Manage children profiles and playlists.
+- Token-based authentication (JWT) for all API requests.
+- Integrated YouTube video search and selection.
 
-## Prerequisites
+### 🔸 Backend (REST + GraphQL)
 
-✔️ **Git**
-✔️ **Angular CLI** v19+ (frontend only)
+- RESTful services for user, video, and playlist management.
+- Independent GraphQL service for:
+  - Profile list
+  - Video list
+  - Playlist list
+  - Video search
 
-```bash
-# Verify installations
-node --version
-npm --version
-mongod --version
-git --version
-ng version
-```
+---
 
-## Installation
-Backend
-Clone repository:
+## 🛠️ Installation & Setup
 
-```bash
-git clone https://github.com/your-user/kidstube.git
-cd kidstube/kidstube-backend
-```
-## Install dependencies:
+### Prerequisites
 
-```bash
-npm install
-```
+- Node.js v22.13.1+
+- Angular CLI v19.1.8
+- Database server : MongoDB
+- API keys: Twilio, YouTube Data API, MailerSend
 
-## Frontend (environment.ts)
-```bash
-export const environment = {
-production: false,
-apiUrl: 'http://localhost:3000' // Must match the backend port
-};
-```
-## Execution
-Frontend ng serve 4200 http://localhost:4200
-```bash
-Frontend (package.json)
-"dependencies": {
-"@angular/core": "^19.1.0",
-"@angular/material": "^19.1.5",
-"bootstrap": "^5.3.3",
-"rxjs": "~7.8.0"
-}
-```
-And finally, the console executes
-```bash
-ng serve
-```
+### Setup Steps
+
+1. **Clone the frontend repository**
+   ```bash
+   git clone https://github.com/your-username/kidstube-frontend.git
+   cd kidstube-frontend
